@@ -11,7 +11,7 @@ namespace Sokoban {
 
 		public Player Player { get; } = new Player();
 
-		private List<Sprite> tileSprites;
+		private readonly List<Sprite> tileSprites;
 
 
 		public Level(int[,] tileData) {

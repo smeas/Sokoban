@@ -29,7 +29,7 @@ namespace Sokoban {
 
 		private static int[] ReadCsv(string data) {
 			return data.Split(',')
-				.Select(str => int.Parse(str))
+				.Select(int.Parse)
 				.ToArray();
 		}
 	}

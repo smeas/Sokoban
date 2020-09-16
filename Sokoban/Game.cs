@@ -6,16 +6,13 @@ using SFML.Window;
 namespace Sokoban {
 	public class Game {
 		private RenderWindow window;
-		private Clock clock;
-		private float deltaTime;
-
 		private Level level;
 		private bool solved;
 		private int currentLevelIndex;
 
-		private Text goodJobText = new Text("Good job!", Resources.gameFont, 42);
-		private Text nextLevelTimerText = new Text("", Resources.gameFont, 24);
-		private Text currentLevelText = new Text("", Resources.gameFont, 24);
+		private readonly Text goodJobText = new Text("Good job!", Resources.gameFont, 42);
+		private readonly Text nextLevelTimerText = new Text("", Resources.gameFont, 24);
+		private readonly Text currentLevelText = new Text("", Resources.gameFont, 24);
 
 		public void Run() {
 			window = new RenderWindow(new VideoMode(960, 960), "Sokoban");
@@ -27,13 +24,9 @@ namespace Sokoban {
 				ReCenterText();
 			};
 
-			clock = new Clock();
-
 			Init();
 
 			while (window.IsOpen) {
-				deltaTime = clock.ElapsedTime.AsSeconds();
-				clock.Restart();
 
 				window.DispatchEvents();
 				Update();
@@ -52,10 +45,9 @@ namespace Sokoban {
 				Console.Beep(440, 100);
 
 				// Update the "next level text" and make sure it's centered.
-				if (currentLevelIndex < Resources.levels.Length - 1)
-					nextLevelTimerText.DisplayedString = "Press space to continue";
-				else
-					nextLevelTimerText.DisplayedString = "A winner is you";
+				nextLevelTimerText.DisplayedString = currentLevelIndex < Resources.levels.Length - 1
+					? "Press space to continue"
+					: "A winner is you";
 
 				nextLevelTimerText.Position =
 					new Vector2f((window.Size.X - nextLevelTimerText.GetGlobalBounds().Width) / 2f, 42 + 10);
@@ -133,7 +125,8 @@ namespace Sokoban {
 
 		private void ReCenterText() {
 			goodJobText.Position = new Vector2f((window.Size.X - goodJobText.GetGlobalBounds().Width) / 2f, 0);
-			nextLevelTimerText.Position = new Vector2f((window.Size.X - nextLevelTimerText.GetGlobalBounds().Width) / 2f, 42 + 10);
+			nextLevelTimerText.Position =
+				new Vector2f((window.Size.X - nextLevelTimerText.GetGlobalBounds().Width) / 2f, 42 + 10);
 		}
 
 		private void StartNextLevel() {
