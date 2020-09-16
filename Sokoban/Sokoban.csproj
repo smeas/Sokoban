@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net472</TargetFramework>
+        <LangVersion>8</LangVersion>
+    </PropertyGroup>
+
+    <!-- The SFML native libraries are 64-bit -->
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="SFML.Net" Version="2.5.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Copy the resources to the output directory -->
+        <Content Include="Resources\**\*.*" CopyToOutputDirectory="PreserveNewest"/>
+    </ItemGroup>
+
+</Project>
