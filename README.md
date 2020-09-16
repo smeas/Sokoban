@@ -1,6 +1,8 @@
 # Sokoban
 Sokoban written in C# with SFML.
 
+Some levels were taken from older sokoban games.
+
 ### Controls
 |             |                   |
 | ----------- | ----------------- |
