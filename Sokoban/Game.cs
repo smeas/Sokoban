@@ -24,6 +24,7 @@ namespace Sokoban {
 			window.KeyPressed += OnKeyPressed;
 			window.Resized += (sender, args) => {
 				window.SetView(new View(new FloatRect(0, 0, args.Width, args.Height)));
+				ReCenterText();
 			};
 
 			clock = new Clock();
@@ -128,6 +129,11 @@ namespace Sokoban {
 					break;
 			#endif
 			}
+		}
+
+		private void ReCenterText() {
+			goodJobText.Position = new Vector2f((window.Size.X - goodJobText.GetGlobalBounds().Width) / 2f, 0);
+			nextLevelTimerText.Position = new Vector2f((window.Size.X - nextLevelTimerText.GetGlobalBounds().Width) / 2f, 42 + 10);
 		}
 
 		private void StartNextLevel() {
