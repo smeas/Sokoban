@@ -11,6 +11,6 @@ Some levels were taken from older sokoban games.
 | Next level  | space             |
 
 ## Screenshots
-![](Screenshots/Sokoban_BbfnD18h8c.png)
+![](Screenshots/demo.gif)
 ![](Screenshots/Sokoban_p9KvLwkIeV.png)
 ![](Screenshots/Sokoban_DSgf06mSfj.png)
